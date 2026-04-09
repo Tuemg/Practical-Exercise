@@ -1,0 +1,93 @@
+---
+title: "Practical-Exercise"
+---
+
+### Text and Images
+
+You can add text here just like a word processor.
+
+## Equations
+
+The equation is $E = mc^2$. Mix of text and Math as, the mean is $\bar{x} = `r mean(c(1,2,3))`$.
+
+## [Quarto](---
+title: "My Quarto Analysis"
+format: html
+---Text and imagesYou can add text here just like a word processor.EquationsThe equation is $E = mc^2$. Mix of text and Math as, The mean of the numbers is $\bar{x} = `r mean(c(1,2,3))`$.Numbered equations$$
+E = mc^2
+$$Reference it:See Equation @eq-energy.Aligned equationsEquations can align as : $$
+\begin{aligned}
+y &= mx + b \\
+z &= ax^2 + bx + c
+\end{aligned}
+$$TablesA. Simple Markdown TablesNameAgeScoreJohn2590Mary3095Note: Simple Markdown tables cannot be cross-referenced in Quarto.B. Tables from R (MOST COMMON){r}
+#| label: setup
+#| include: false
+# Load libraries and create data
+library(knitr)
+students <- data.frame(
+  Name = c("John", "Mary"),
+  Age = c(25, 30),
+  Score = c(90, 95)
+){r}
+#| label: tbl-students
+#| tbl-cap: "Student Scores"
+   kable(students)Reference as:See Table @tbl-students.Code ChunksCode that appears in your rendered doc{r my-chunk, message=FALSE, warning=FALSE}{# This code will appear in the final rendered document} print("Hello Quarto!")Codes that are excluded from the final document{r fig-starwars, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Relationship between height and mass of Star Wars characters"}
+library(dplyr)
+library(ggplot2)
+
+starwars %>%
+  filter(mass < 100) %>%
+  ggplot(aes(x = mass, y = height, color = gender)) +
+  geom_point(size = 3, alpha = 0.5) +
+  geom_smooth() +
+  theme_bw() +
+  labs(
+    title = "Height vs Mass of Star Wars Characters",
+    x = "Mass",
+    y = "Height",
+    color = "Gender"
+  )Code included in TextThe average height of star-wars characters is r round(mean(starwars$height,na.rm=TRUE)/100,2) in meters.Cross ReferencingHere is a reference to @fig-starwarsHow about a call out?remember to use sunscreenAdd a bibliographyHere is some text with citations about R programming .BibliographyQuartoQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.Running CodeWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this: <<<<<<< HEAD <<<<<<< HEAD =======Running CodeWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:32552b0ea4eed620a5ee07fc0079e6877a14cd50 3bebabe248d9ec6cdc3fde4517d5874ed23d8ed7)
+
+[Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.](---
+title: "My Quarto Analysis"
+format: html
+---Text and imagesYou can add text here just like a word processor.EquationsThe equation is $E = mc^2$. Mix of text and Math as, The mean of the numbers is $\bar{x} = `r mean(c(1,2,3))`$.Numbered equations$$
+E = mc^2
+$$Reference it:See Equation @eq-energy.Aligned equationsEquations can align as : $$
+\begin{aligned}
+y &= mx + b \\
+z &= ax^2 + bx + c
+\end{aligned}
+$$TablesA. Simple Markdown TablesNameAgeScoreJohn2590Mary3095Note: Simple Markdown tables cannot be cross-referenced in Quarto.B. Tables from R (MOST COMMON){r}
+#| label: setup
+#| include: false
+# Load libraries and create data
+library(knitr)
+students <- data.frame(
+  Name = c("John", "Mary"),
+  Age = c(25, 30),
+  Score = c(90, 95)
+){r}
+#| label: tbl-students
+#| tbl-cap: "Student Scores"
+   kable(students)Reference as:See Table @tbl-students.Code ChunksCode that appears in your rendered doc{r my-chunk, message=FALSE, warning=FALSE}{# This code will appear in the final rendered document} print("Hello Quarto!")Codes that are excluded from the final document{r fig-starwars, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Relationship between height and mass of Star Wars characters"}
+library(dplyr)
+library(ggplot2)
+
+starwars %>%
+  filter(mass < 100) %>%
+  ggplot(aes(x = mass, y = height, color = gender)) +
+  geom_point(size = 3, alpha = 0.5) +
+  geom_smooth() +
+  theme_bw() +
+  labs(
+    title = "Height vs Mass of Star Wars Characters",
+    x = "Mass",
+    y = "Height",
+    color = "Gender"
+  )Code included in TextThe average height of star-wars characters is r round(mean(starwars$height,na.rm=TRUE)/100,2) in meters.Cross ReferencingHere is a reference to @fig-starwarsHow about a call out?remember to use sunscreenAdd a bibliographyHere is some text with citations about R programming .BibliographyQuartoQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.Running CodeWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this: <<<<<<< HEAD <<<<<<< HEAD =======Running CodeWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:32552b0ea4eed620a5ee07fc0079e6877a14cd50 3bebabe248d9ec6cdc3fde4517d5874ed23d8ed7)
+
+```{r}
+1 + 1
+```
